@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <!-- Styles generated from theme -->
+  <link href="{{themedStylesUrl}}" rel="stylesheet" type="text/css">
+  <!-- Favicon from theme -->
+  <link rel="shortcut icon" href="{{faviconUrl}}" type="image/x-icon"/>
+
+  <title>{{pageTitle}}</title>
+  {{{SignInWidgetResources}}}
+
+  <style nonce="{{nonceValue}}">
+      {{#useSiwGen3}}
+      html {
+          font-size: 87.5%;
+      }
+      {{/useSiwGen3}}
+      html {
+          font-family: 'Aeonik','Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue',sans-serif;
+      }
+
+      #login-bg-image-id {
+          background-image: {{bgImageUrl}}
+      }
+
+      #okta-sign-in > .MuiScopedCssBaseline-root > .MuiBox-root > .MuiBox-root {
+          border-radius: 0;
+          margin: 20vh auto;
+          border: none;
+      }
+      #okta-register-container  #okta-sign-in > .MuiScopedCssBaseline-root > .MuiBox-root > .MuiBox-root {
+          margin: 15vh auto;
+      }
+
+      #okta-sign-in > .MuiScopedCssBaseline-root > .MuiBox-root {
+          justify-content: center;
+      }
+
+      #okta-auth-container {
+          display: flex;
+      }
+
+      #okta-auth-container > * {
+          width: 100vw;
+          height: 100vh;
+      }
+
+      #okta-register-splash, #okta-login-splash {
+          display: none;
+          background: #415A6A;
+          background-image: url("https://drive.google.com/thumbnail?id=13mgdmymSq8xNNkiPJ_9Q9RElZZw7dEac&sz=w1000");
+          justify-content: space-around;
+          flex-direction: column;
+      }
+
+      #okta-register-splash.active, #okta-login-splash.active {
+          display: flex;
+      }
+
+      #okta-register-container, #okta-login-container {
+          display: none;
+          background: #fff;
+      }
+      #okta-register-container.active, #okta-login-container.active {
+          display: initial;
+      }
+
+      .inner-splash-wrapper {
+          padding: 25%;
+      }
+
+      .splash-text {
+          text-align: center;
+          color: #fff;
+          font-weight: 500;
+          font-size: 1.571rem;
+          line-height: 1.25;
+      }
+      .splash-action {
+          cursor: pointer;
+          padding: 6px 16px;
+          transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+          padding-top: 0.85714286rem;
+          padding-right: 1.14285714rem;
+          display: flex;
+          position: relative;
+          transition-property: color,background-color,border-color,box-shadow;
+          transition-duration: 100ms;
+          transition-timing-function: linear;
+          border-width: 1px;
+          border-style: solid;
+          border-radius: 24px;
+          border-color: transparent;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1.2;
+          white-space: normal;
+          color:  #654512;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 0.85714286rem;
+          padding-left: 1.14285714rem;
+          background-color: #fff;
+      }
+      #loader {
+          display: none;
+          margin: auto;
+          position: relative;
+      }
+      #loader.active {
+          display: initial;
+      }
+      .loader-text {
+          font-size: 2.5rem;
+          font-weight: bold;
+          position: absolute;
+          text-shadow: 0px 0px 2px rgb(115 29 107 / 20%);
+          margin: auto;
+          bottom: 0;
+          right: 0;
+          top: 0;
+          left: 0;
+          width: fit-content;
+          height: fit-content;
+          color: rgb(255 255 255 / 100%);
+          animation: glitch 2s infinite;
+      }
+
+      .loader-text::before,
+      .loader-text::after {
+          content: 'LOADING...';
+          position: absolute;
+          top: 0;
+          left: 0;
+          color: rgb(255 61 236 / 20%);
+          background: transparent;
+          clip-path: polygon(0 0, 100% 0, 100% 48%, 0 40%);
+          animation: glitch 2s infinite;
+      }
+
+      .loader-text::after {
+          color: rgb(255 172 47 / 20%);;
+          clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+      }
+
+      @keyframes glitch {
+          0%, 100% {
+              transform: translate(0);
+          }
+          20% {
+              transform: translate(-2px, 2px);
+          }
+          40% {
+              transform: translate(2px, -2px);
+          }
+          60% {
+              transform: translate(-1px, 1px);
+          }
+          80% {
+              transform: translate(1px, -1px);
+          }
+      }
+  </style>
+</head>
+<body>
+<div id="login-bg-image-id" class="login-bg-image tb--background"></div>
+<div id="okta-auth-container">
+  <div id="okta-login-container"></div>
+  <div id="okta-login-splash">
+    <div class="inner-splash-wrapper">
+      <p class="splash-text">Already A Member?</p>
+      <button class="splash-action MuiButton-primaryPrimary" id="login">Log In</button>
+    </div>
+  </div>
+
+  <!-- LOADER START -->
+  <div id="loader">
+    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="none" stroke-opacity="1" stroke="#608DAA" stroke-width=".5" cx="100" cy="100" r="0"><animate attributeName="r" calcMode="spline" dur="2" values="1;80" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate><animate attributeName="stroke-width" calcMode="spline" dur="2" values="0;25" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" calcMode="spline" dur="2" values="1;0" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate></circle></svg>
+    <p class="loader-text">LOADING....</p>
+  </div>
+  <!-- LOADER END -->
+
+  <div id="okta-register-splash">
+    <div class="inner-splash-wrapper">
+      <p class="splash-text">Not a member yet?</p>
+      <button class="splash-action MuiButton-primaryPrimary" id="register">Register</button>
+    </div>
+  </div>
+  <div id="okta-register-container"></div>
+</div>
+
+
+<!--
+    "OktaUtil" defines a global OktaUtil object
+    that contains methods used to complete the Okta login flow.
+ -->
+{{{OktaUtil}}}
+
+<script type="text/javascript" nonce="{{nonceValue}}">
+	// "config" object contains default widget configuration
+	// with any custom overrides defined in your admin settings.
+
+	const registerButton = document.querySelector("button#register");
+	const loginButton = document.querySelector("button#login");
+	const loader = document.querySelector("#loader");
+	const registerSplash = document.querySelector("#okta-register-splash");
+	const loginSplash = document.querySelector("#okta-login-splash");
+	const registerContainer = document.querySelector("#okta-register-container");
+	const loginContainer = document.querySelector("#okta-login-container");
+
+	const config = OktaUtil.getSignInWidgetConfig();
+	config.theme = {
+		tokens: {
+			"BorderColorDisplay": "#e1e1e1",
+			"BorderRadiusTight": "4px",
+			"BorderRadiusMain": "24px",
+			"PalettePrimaryDark": "#FF3FED"
+		}
+	}
+
+	// Render the Okta Sign-In Widget
+	const oktaSignIn = new OktaSignIn(config);
+	oktaSignIn.renderEl({ el: '#okta-login-container' },
+		OktaUtil.completeLogin,
+		function(error) {
+			// Logs errors that occur when configuring the widget.
+			// Remove or replace this with your own custom error handler.
+			console.log(error.message, error);
+		}
+	);
+
+	oktaSignIn.on('afterRender', () => {
+		/* OTHER CODE **/
+		registerSplash.classList.add("active");
+		loginContainer.classList.add("active");
+		loader.classList.remove("active");
+	});
+
+	oktaSignIn.afterTransform('identify', ({ formBag }) => {
+		const title = formBag.uischema.elements.find(ele => ele.type === 'Title');
+		if(title){
+			title.options.content = "Log In";
+		}
+		const help = formBag.uischema.elements.find(ele => ele.type === 'Link' && ele.options.dataSe === 'help');
+		const unlock = formBag.uischema.elements.find(ele => ele.type === 'Link' && ele.options.dataSe === 'unlock');
+		const divider = formBag.uischema.elements.find(ele => ele.type === 'Divider');
+		const signupInfo = formBag.uischema.elements.find(ele => ele.elements && ele.elements.length === 2 && ele.elements[0].key=== 'identify_Description_Dont_have_an_account');
+		formBag.uischema.elements = formBag.uischema.elements.filter(ele => ![help, unlock, signupInfo, divider].includes(ele));
+	});
+
+	loginButton.addEventListener ('click', () => {
+		loader.classList.add("active");
+		oktaRegister.remove();
+		oktaSignIn.renderEl({ el: '#okta-login-container' });
+		loginSplash.classList.remove("active");
+		registerContainer.classList.remove("active");
+	});
+
+	// Render the Okta Sign-Up Widget
+	const oktaRegister = new OktaSignIn({
+			...config,
+			flow: 'signup',
+		}
+	);
+
+	oktaRegister.on('afterRender', () => {
+		loginSplash.classList.add("active");
+		registerContainer.classList.add("active");
+		loader.classList.remove("active");
+	});
+
+	oktaRegister.afterTransform('enroll-profile', ({ formBag }) => {
+		const title = formBag.uischema.elements.find(ele => ele.type === 'Title');
+		const actionButton = formBag.uischema.elements.find(ele => ele.type === 'Button');
+		if(title){
+			title.options.content = "Register";
+		}
+		if(actionButton){
+			actionButton.label = "Register";
+		}
+
+		const divider = formBag.uischema.elements.find(ele => ele.type === 'Divider');
+		const description = formBag.uischema.elements.find(ele => ele.type === 'Description');
+		const signinInfo = formBag.uischema.elements.find(ele => ele.elements && ele.elements.length === 2 && ele.elements[0].key=== 'enroll-profile_Description_Already_have_an_account');
+		formBag.uischema.elements = formBag.uischema.elements.filter(ele => ![signinInfo, divider, description].includes(ele));
+	});
+
+	registerButton.addEventListener ('click', () => {
+		oktaSignIn.remove();
+		loader.classList.add("active");
+		oktaRegister.renderEl({ el: '#okta-register-container' });
+		registerSplash.classList.remove("active");
+		loginContainer.classList.remove("active");
+	});
+
+</script>
+</body>
+</html>
