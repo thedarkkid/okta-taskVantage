@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex,nofollow"/>
   <!-- Styles generated from theme -->
   <link href="{{themedStylesUrl}}" rel="stylesheet" type="text/css">
   <!-- Favicon from theme -->
@@ -13,17 +13,31 @@
   {{{SignInWidgetResources}}}
 
   <style nonce="{{nonceValue}}">
-      {{#useSiwGen3}}
+      {
+      {
+          #useSiwGen3
+      }
+      }
       html {
           font-size: 87.5%;
       }
-      {{/useSiwGen3}}
+
+      {
+      {
+      /
+      useSiwGen3
+      }
+      }
       html {
-          font-family: 'Aeonik','Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue',sans-serif;
+          font-family: 'Aeonik', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
       }
 
       #login-bg-image-id {
-          background-image: {{bgImageUrl}}
+          background-image: {
+      {
+          bgImageUrl
+      }
+      }
       }
 
       #okta-sign-in > .MuiScopedCssBaseline-root > .MuiBox-root > .MuiBox-root {
@@ -31,7 +45,8 @@
           margin: 20vh auto;
           border: none;
       }
-      #okta-register-container  #okta-sign-in > .MuiScopedCssBaseline-root > .MuiBox-root > .MuiBox-root {
+
+      #okta-register-container #okta-sign-in > .MuiScopedCssBaseline-root > .MuiBox-root > .MuiBox-root {
           margin: 15vh auto;
       }
 
@@ -64,6 +79,7 @@
           display: none;
           background: #fff;
       }
+
       #okta-register-container.active, #okta-login-container.active {
           display: initial;
       }
@@ -79,15 +95,16 @@
           font-size: 1.571rem;
           line-height: 1.25;
       }
+
       .splash-action {
           cursor: pointer;
           padding: 6px 16px;
-          transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+          transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
           padding-top: 0.85714286rem;
           padding-right: 1.14285714rem;
           display: flex;
           position: relative;
-          transition-property: color,background-color,border-color,box-shadow;
+          transition-property: color, background-color, border-color, box-shadow;
           transition-duration: 100ms;
           transition-timing-function: linear;
           border-width: 1px;
@@ -98,7 +115,7 @@
           font-weight: 500;
           line-height: 1.2;
           white-space: normal;
-          color:  #654512;
+          color: #654512;
           width: 100%;
           justify-content: center;
           align-items: center;
@@ -106,14 +123,17 @@
           padding-left: 1.14285714rem;
           background-color: #fff;
       }
+
       #loader {
           display: none;
           margin: auto;
           position: relative;
       }
+
       #loader.active {
           display: initial;
       }
+
       .loader-text {
           font-size: 2.5rem;
           font-weight: bold;
@@ -178,8 +198,17 @@
   </div>
 
   <!-- LOADER START -->
-  <div id="loader">
-    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="none" stroke-opacity="1" stroke="#608DAA" stroke-width=".5" cx="100" cy="100" r="0"><animate attributeName="r" calcMode="spline" dur="2" values="1;80" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate><animate attributeName="stroke-width" calcMode="spline" dur="2" values="0;25" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" calcMode="spline" dur="2" values="1;0" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate></circle></svg>
+  <div id="loader" class="active">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <circle fill="none" stroke-opacity="1" stroke="#608DAA" stroke-width=".5" cx="100" cy="100" r="0">
+        <animate attributeName="r" calcMode="spline" dur="2" values="1;80" keyTimes="0;1" keySplines="0 .2 .5 1"
+                 repeatCount="indefinite"></animate>
+        <animate attributeName="stroke-width" calcMode="spline" dur="2" values="0;25" keyTimes="0;1"
+                 keySplines="0 .2 .5 1" repeatCount="indefinite"></animate>
+        <animate attributeName="stroke-opacity" calcMode="spline" dur="2" values="1;0" keyTimes="0;1"
+                 keySplines="0 .2 .5 1" repeatCount="indefinite"></animate>
+      </circle>
+    </svg>
     <p class="loader-text">LOADING....</p>
   </div>
   <!-- LOADER END -->
@@ -226,33 +255,50 @@
 	const oktaSignIn = new OktaSignIn(config);
 	oktaSignIn.renderEl({ el: '#okta-login-container' },
 		OktaUtil.completeLogin,
-		function(error) {
+		function (error) {
 			// Logs errors that occur when configuring the widget.
 			// Remove or replace this with your own custom error handler.
 			console.log(error.message, error);
 		}
 	);
 
-	oktaSignIn.on('afterRender', () => {
-		/* OTHER CODE **/
+
+	const signInObserver = new MutationObserver((mut) => {
+		if (mut.length < 4 || mut[0].target === loginContainer) {
+			// I use No_4 because okta loads all the components at once and the signing SIW has4 child.
+			// The second condition is to make sure we don't flag class changes on the SIW container.
+			return;
+		}
 		registerSplash.classList.add("active");
 		loginContainer.classList.add("active");
 		loader.classList.remove("active");
+		signInObserver.disconnect();
+		initRegisterObserver();
 	});
+
+	const initSignInObserver = () => {
+		signInObserver.observe(loginContainer, {
+			subtree: true,
+			childList: true,
+			attributes: true,
+			characterData: true,
+		});
+	};
+	initSignInObserver();
 
 	oktaSignIn.afterTransform('identify', ({ formBag }) => {
 		const title = formBag.uischema.elements.find(ele => ele.type === 'Title');
-		if(title){
+		if (title) {
 			title.options.content = "Log In";
 		}
 		const help = formBag.uischema.elements.find(ele => ele.type === 'Link' && ele.options.dataSe === 'help');
 		const unlock = formBag.uischema.elements.find(ele => ele.type === 'Link' && ele.options.dataSe === 'unlock');
 		const divider = formBag.uischema.elements.find(ele => ele.type === 'Divider');
-		const signupInfo = formBag.uischema.elements.find(ele => ele.elements && ele.elements.length === 2 && ele.elements[0].key=== 'identify_Description_Dont_have_an_account');
-		formBag.uischema.elements = formBag.uischema.elements.filter(ele => ![help, unlock, signupInfo, divider].includes(ele));
+		const signupInfo = formBag.uischema.elements.find(ele => ele.elements && ele.elements.length === 2 && ele.elements[0].key === 'identify_Description_Dont_have_an_account');
+		formBag.uischema.elements = formBag.uischema.elements.filter(ele => ![ help, unlock, signupInfo, divider ].includes(ele));
 	});
 
-	loginButton.addEventListener ('click', () => {
+	loginButton.addEventListener('click', () => {
 		loader.classList.add("active");
 		oktaRegister.remove();
 		oktaSignIn.renderEl({ el: '#okta-login-container' });
@@ -267,29 +313,45 @@
 		}
 	);
 
-	oktaRegister.on('afterRender', () => {
+	const registerObserver = new MutationObserver((mut) => {
+		if (mut.length < 2 || mut[0].target === registerContainer) {
+			// checks that okta has loaded the register component (2 children) and that the observer is not getting a false flag (register.active change).
+			return;
+		}
 		loginSplash.classList.add("active");
 		registerContainer.classList.add("active");
 		loader.classList.remove("active");
+		registerObserver.disconnect();
+		initSignInObserver();
 	});
+
+	const initRegisterObserver = () => {
+		registerObserver.observe(registerContainer, {
+			subtree: true,
+			childList: true,
+			attributes: true,
+			characterData: true,
+		});
+	};
+	initRegisterObserver();
 
 	oktaRegister.afterTransform('enroll-profile', ({ formBag }) => {
 		const title = formBag.uischema.elements.find(ele => ele.type === 'Title');
 		const actionButton = formBag.uischema.elements.find(ele => ele.type === 'Button');
-		if(title){
+		if (title) {
 			title.options.content = "Register";
 		}
-		if(actionButton){
+		if (actionButton) {
 			actionButton.label = "Register";
 		}
 
 		const divider = formBag.uischema.elements.find(ele => ele.type === 'Divider');
 		const description = formBag.uischema.elements.find(ele => ele.type === 'Description');
-		const signinInfo = formBag.uischema.elements.find(ele => ele.elements && ele.elements.length === 2 && ele.elements[0].key=== 'enroll-profile_Description_Already_have_an_account');
-		formBag.uischema.elements = formBag.uischema.elements.filter(ele => ![signinInfo, divider, description].includes(ele));
+		const signinInfo = formBag.uischema.elements.find(ele => ele.elements && ele.elements.length === 2 && ele.elements[0].key === 'enroll-profile_Description_Already_have_an_account');
+		formBag.uischema.elements = formBag.uischema.elements.filter(ele => ![ signinInfo, divider, description ].includes(ele));
 	});
 
-	registerButton.addEventListener ('click', () => {
+	registerButton.addEventListener('click', () => {
 		oktaSignIn.remove();
 		loader.classList.add("active");
 		oktaRegister.renderEl({ el: '#okta-register-container' });
